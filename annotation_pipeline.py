@@ -1,5 +1,5 @@
 from model.load_behaviour_model_from_checkpoint_2 import *
-from model.obsolete.get_cropped_human_frames_5 import *
+from CVND_Exercises_2_2_YOLO.get_cropped_human_frames import *
 from model.get_behaviour_features_6 import *
 from model.loading_emotion_model_7 import *
 from model.face_detector_8 import *
