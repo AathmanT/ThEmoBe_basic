@@ -22,7 +22,7 @@ from app import routes, models
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-@app.route("/annotate",methods=["POST"])
+@app.route("/annotate")
 def annotate():
     target = "/".join([APP_ROOT,"toAnnotate"])
 
