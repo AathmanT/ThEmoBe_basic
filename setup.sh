@@ -21,7 +21,7 @@ cd ~/ThEmoBe_basic
 
 git clone https://github.com/AathmanT/CVND_Exercises_2_2_YOLO.git
 
-wget -O yolov3.weights https://pjreddie.com/media/files/yolov3.weights
+#wget -O yolov3.weights https://pjreddie.com/media/files/yolov3.weights
 
 
 
