@@ -7,18 +7,22 @@ from model.face_detector_8 import *
 from Parallel_GSOM_for_HAAP.create_gsom_objects import *
 from model.bounding_box_11 import *
 
-
 behaviour_model = create_behaviour_model_from_checkpoint()
 
 emotion_model = create_emotion_model_from_checkpoint()
 
 
+def annotateVideo(APP_ROOT, video_path, emo_annotation, behav_annotation, threat_annotation, video_id):
+    # TODO  - save download_req_id,task_status and download_allocation_time(current time when updating status)
 
-def annotateVideo(APP_ROOT, video_path, emo_annotation,behav_annotation,threat_annotation, video_id):
+    target = "/".join([APP_ROOT, "temp"])
 
-    frames_list = convert_to_frames(video_path)
+    temp_save_path = target + '/' + video_id + '/'
 
-    cropped_image_sequence_for_behaviour, coordinates_array, cropped_image_sequence_for_emotion = get_cropped_frames(frames_list)
+    frames_list = convert_to_frames(video_path,temp_save_path)
+
+    cropped_image_sequence_for_behaviour, coordinates_array, cropped_image_sequence_for_emotion = get_cropped_frames(
+        frames_list)
 
     behaviour_features = get_behaviour_features(behaviour_model, cropped_image_sequence_for_behaviour)
 
@@ -42,7 +46,7 @@ def annotateVideo(APP_ROOT, video_path, emo_annotation,behav_annotation,threat_a
 
     print(predictions)
 
-    what_to_plot = [emo_annotation,behav_annotation,threat_annotation]
+    what_to_plot = [emo_annotation, behav_annotation, threat_annotation]
 
     plot_and_save_bounding_boxes(APP_ROOT, predictions, frames_list, coordinates_array, video_id, what_to_plot)
 
